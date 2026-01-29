@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Résumé</title>
+    <meta name="description" content="Download the latest copy of my résumé as a PDF." />
+    <meta name="color-scheme" content="light dark" />
+    <style>
+        :root {
+            --bg: #0f172a;
+            --fg: #e2e8f0;
+            --muted: #94a3b8;
+            --panel: #111827;
+            --accent: #22c55e;
+            --accent-ink: #052e16;
+            --ring: #1d4ed8
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f1f5f9;
+                --fg: #0f172a;
+                --muted: #475569;
+                --panel: #ffffff;
+                --accent: #16a34a;
+                --accent-ink: #052e16;
+                --ring: #2563eb
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            display: grid;
+            min-height: 100svh;
+            place-items: center;
+            padding: 24px
+        }
+
+        .card {
+            width: min(720px, 92%);
+            background: var(--panel);
+            border-radius: 20px;
+            padding: 28px 28px 22px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .25)
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: clamp(1.6rem, 2.5vw + 1rem, 2.2rem);
+            letter-spacing: .2px
+        }
+
+        p {
+            margin: .25rem 0 1rem;
+            color: var(--muted)
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 14px 0 6px
+        }
+
+        .btn {
+            --pad: 12px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            padding: var(--pad);
+            border-radius: 12px;
+            transition: transform .05s ease, filter .2s ease, box-shadow .2s ease;
+            box-shadow: 0 2px 0 rgba(0, 0, 0, .15)
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            flex: 0 0 18px
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accent-ink)
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--ring);
+            outline: 2px solid var(--ring)
+        }
+
+        .btn:hover {
+            filter: brightness(1.06);
+            transform: translateY(-1px)
+        }
+
+        .meta {
+            margin-top: 14px;
+            font-size: .9rem;
+            color: var(--muted)
+        }
+
+        .file-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px
+        }
+
+        .pill {
+            font-variant-numeric: tabular-nums;
+            border: 1px dashed var(--muted);
+            padding: 2px 8px;
+            border-radius: 999px
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: .85rem;
+            color: var(--muted)
+        }
+
+        code {
+            background: rgba(127, 127, 127, .15);
+            padding: .1rem .35rem;
+            border-radius: .35rem
+        }
+    </style>
+</head>
+
+<body>
+    <main class="card">
+        <header>
+            <h1>View my Resume and CV </h1>
+            <p>Open my Resume and CV in your browser to view and download</p>
+        </header>
+
+        <div class="actions" role="group" aria-label="Resume actions">
+            <a class="btn secondary" href="STang Resume.pdf" target="_blank" rel="noopener"
+                aria-label="Open Resume in a new tab">
+
+                <!-- eye icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor"
+                        d="M12 5c5.523 0 10 4.5 10 7s-4.477 7-10 7S2 14.5 2 12s4.477-7 10-7Zm0 2C8.134 7 4.75 10.143 4.064 12 4.75 13.857 8.134 17 12 17s7.25-3.143 7.936-5C19.25 10.143 15.866 7 12 7Zm0 2.5A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5Z" />
+                </svg>
+                View Resume
+            </a>
+            <a class="btn secondary" href="STang CV Temp.pdf" target="_blank" rel="noopener"
+                aria-label="Open CV in a new tab">
+
+                <!-- document icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor"
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11 8 15.01z" />
+                </svg>
+                View CV
+            </a>
+        </div>
+
+        <footer>
+
+        </footer>
+    </main>
+    <script>
+        // Fill the "Updated" time with today's date so the page feels fresh even when hosted statically.
+        (function () {
+            try {
+                const t = document.getElementById('today');
+                if (!t) return;
+                const d = new Date();
+                const fmt = new Intl.DateTimeFormat(navigator.language || 'en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+                t.textContent = fmt.format(d);
+            } catch { }
+        }());
+    </script>
+</body>
+
+</html>
